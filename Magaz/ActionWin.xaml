@@ -27,14 +27,26 @@
                    Text="MaGaz" 
                    VerticalAlignment="Center" 
                    HorizontalAlignment="Center"
-                   FontSize="25" FontFamily="Viner Hand ITC"
-                   />
+                   FontSize="25" FontFamily="Viner Hand ITC"/>
 
+
+        <WrapPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
+            <TextBlock Text="Поиск товаров" FontSize="20"/>
+            <TextBox x:Name="txtSearch" 
+                     Width="150" 
+                     Margin="20 0 0 0" 
+                     FontSize="15"
+                     VerticalContentAlignment="Center"
+                      FontFamily="Tempus Sans ITC"
+                     TextChanged="txtSearch_TextChanged"/>
+        </WrapPanel>
+        
+        
         <Grid Grid.Row="1"
               Grid.Column="0"
               Grid.RowSpan="3">
             <StackPanel >
-                <Button x:Name="btnMainPage" Height="30" Width="120" Content="Все товары" Margin="5 5 5 10" Click="btnMainPage_Click"/>
+                <Button x:Name="btnMainPage" Height="30" Width="120" Content="Все товары" Margin="5 5 5 10" Click="btnMainPage_Click" Style="{x:Null}"/>
                 <Button x:Name="btnAppliances" Height="30" Width="120" Content="Бытовая техника" Margin="5 9" Click="btnAppliances_Click"/>
                 <Button x:Name="btnSmartphone" Height="30" Width="120" Content="Смартфоны" Margin="5 9" Click="btnSmartphone_Click"/>
                 <Button x:Name="btnTV" Height="30" Width="120" Content="ТВ и развлечения" Margin="5 9" Click="btnTV_Click"/>
@@ -53,6 +65,8 @@
                             <ColumnDefinition Width="100"/>
                             <ColumnDefinition Width="400"/>
                             <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="50"/>
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="1">
@@ -61,7 +75,8 @@
                                 <RowDefinition Height="40"/>
                             </Grid.RowDefinitions>
 
-                            <TextBlock Grid.Row="0" Text="{Binding ProductName}" TextWrapping="Wrap"/>
+
+                            <TextBlock Grid.Row="0" Text= "{Binding ProductName}" TextWrapping="Wrap"/>
                             <TextBlock Grid.Row="1" Text="{Binding ProductDescription}" TextWrapping="Wrap"/>
                         </Grid>
 
@@ -69,13 +84,40 @@
                             <Image x:Name="productImage" />
                         </Border>
 
+
+                        <Border Grid.Column="3" 
+                                Grid.ColumnSpan="2" 
+                                Background="#7284A8"
+                                Margin="5"
+                                CornerRadius="5"/>
+
                         <TextBlock Grid.Column="2" 
-                                   Text="{Binding ProductPrice}" 
-                                   VerticalAlignment="Center" 
-                                   HorizontalAlignment="Right"
-                                   FontSize="20"
-                                   FontWeight="Bold"/>
+                   Text="{Binding ProductPrice}" 
+                   VerticalAlignment="Center" 
+                   HorizontalAlignment="Right"
+                   FontSize="20"
+                   FontWeight="Bold"/>
+
+                        
+                        
+                        <TextBlock Grid.Column="3" 
+                   Text="{Binding CountProduct}" 
+                   VerticalAlignment="Center" 
+                   HorizontalAlignment="Right"
+                   FontSize="20"
+                   FontWeight="Bold"/>
+
+                        <TextBlock Grid.Column="4" 
+                   Text="{Binding Measure.NameMeasure}" 
+                   VerticalAlignment="Center" 
+                   HorizontalAlignment="Left"
+                                   Margin="10 0"
+                   FontSize="20"
+                   FontWeight="Bold"/>
+                        
                     </Grid>
+                    
+                    
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
