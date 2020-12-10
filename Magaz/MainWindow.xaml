@@ -88,8 +88,7 @@
                 Width="180"
                 Height="30"
                 Content="Войти"
-                FontSize="15" 
-                />
+                FontSize="15" />
 
         <Button x:Name="btnClose"
                 Grid.Column="0"
