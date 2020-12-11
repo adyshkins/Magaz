@@ -25,6 +25,8 @@ namespace Magaz
         string pathImage = null;
         private Product AddProduct {get;}
 
+        private bool _isEdit;
+
         public AddEditWin()
         {
             InitializeComponent();
@@ -37,12 +39,15 @@ namespace Magaz
             cmbUnitOfMeasure.SelectedIndex = 0;
 
             AddProduct = new Product();
+            _isEdit = false;
+
         }
 
         public AddEditWin(Product product)
         {
             InitializeComponent();
 
+            _isEdit = true;
             // заполнение полей данными
             cmbProductCategory.ItemsSource = context.CategoryProduct.ToList();
             cmbProductCategory.DisplayMemberPath = "NameCategory";
@@ -95,6 +100,7 @@ namespace Magaz
         // Добавить (Изменить) продукт
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            
             // проверка на пустоту
             if (string.IsNullOrWhiteSpace(txtProductName.Text))
             {
@@ -114,7 +120,7 @@ namespace Magaz
                 return;
             }
 
-            // если нет фото передвем null
+            // если нет фото передавем null
             if (pathImage != null)
             {
                 AddProduct.ProductImage = File.ReadAllBytes(pathImage);
@@ -134,23 +140,32 @@ namespace Magaz
                 }
             }
 
+            if (_isEdit == false)
+            {
+                AddProduct.ProductName = txtProductName.Text;
+                AddProduct.ProductDescription = txtProductDescription.Text;
+                AddProduct.ProductPrice = Convert.ToDecimal(txtProductPrice.Text);
+                AddProduct.CountProduct = Convert.ToInt32(txtProductCount.Text);
 
-            AddProduct.ProductName = txtProductName.Text;
-            AddProduct.ProductDescription = txtProductDescription.Text;
-            AddProduct.ProductPrice = Convert.ToDecimal(txtProductPrice.Text);
-            AddProduct.CountProduct = Convert.ToInt32(txtProductCount.Text);
+                AddProduct.IdProductCategory = context.CategoryProduct
+                .Where(i => i.NameCategory == cmbProductCategory.Text)
+                .Select(i => i.IdCategory).FirstOrDefault();
 
-            AddProduct.IdProductCategory = context.CategoryProduct
-            .Where(i => i.NameCategory == cmbProductCategory.Text)
-            .Select(i => i.IdCategory).FirstOrDefault();
+                AddProduct.IdUnitOfMeasure = context.Measure.Where(i => i.NameMeasure == cmbUnitOfMeasure.Text)
+                .Select(i => i.IdMeasure).FirstOrDefault();
 
-            AddProduct.IdUnitOfMeasure = context.Measure.Where(i => i.NameMeasure == cmbUnitOfMeasure.Text)
-            .Select(i => i.IdMeasure).FirstOrDefault();
+                context.Product.Add(AddProduct); // добавление товара
+                context.SaveChanges();
+                MessageBox.Show($"Товар {txtProductName.Text} добавлен");
+            }
 
-            context.Product.Add(AddProduct); // добавление товара
-            context.SaveChanges();
-            MessageBox.Show($"Товар {txtProductName.Text} добавлен");
-            this.Close();
+            if (_isEdit == true)
+
+            { 
+                // изменения выбранного продукта
+            }
+
+                this.Close();
         }
 
         // запрет ввода всех символов кроме цифр и точки в поле цена
