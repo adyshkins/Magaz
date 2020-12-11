@@ -81,7 +81,15 @@
                         </Grid>
 
                         <Border Grid.Column="0" Width="70" Margin="3" BorderBrush="Gray" BorderThickness="1" CornerRadius="4">
-                            <Image x:Name="productImage" Source="{Binding ProductImage}"/>
+                            <Image x:Name="productImage">
+                                <Image.Source>
+                                    <Binding Path="ProductImage">
+                                        <Binding.TargetNullValue>
+                                            <ImageSource>Image\nullImage.png</ImageSource>
+                                        </Binding.TargetNullValue>
+                                    </Binding>
+                                </Image.Source>
+                            </Image>
                         </Border>
 
 
@@ -142,7 +150,8 @@
                     Grid.Row="0"
                     Content="Изменить"
                     Margin="20 15"
-                    FontSize="18"/>
+                    FontSize="18" Click="btnEditProduct_Click"
+                    />
 
             <Button x:Name="btnDeleteProduct" 
                     Grid.Column="2"

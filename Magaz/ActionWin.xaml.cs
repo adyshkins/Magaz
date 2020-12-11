@@ -29,7 +29,7 @@ namespace Magaz
 
             productList = new ObservableCollection<Product>(context.Product);
             ListProduct.ItemsSource = productList;
-           
+
         }
 
         void BrushButton() // переделать
@@ -119,7 +119,7 @@ namespace Magaz
         private void txtSearch_TextChanged(object sender, TextChangedEventArgs e) // поиск товаров по имени и описанию
         {
             ListProduct.ItemsSource = productList
-                .Where(i => i.ProductName.Contains(txtSearch.Text) 
+                .Where(i => i.ProductName.Contains(txtSearch.Text)
                 || i.ProductDescription.Contains(txtSearch.Text)
                 || i.IdProduct.ToString() == txtSearch.Text);
         }
@@ -130,7 +130,20 @@ namespace Magaz
             this.Opacity = 0.3;
             addEditWin.ShowDialog();
             this.Opacity = 1;
-            ListProduct.ItemsSource = productList;
+            ListProduct.ItemsSource = new ObservableCollection<Product>(context.Product);
+
+        }
+
+        private void btnEditProduct_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListProduct.SelectedItem is Product product)
+            {
+                AddEditWin addEditWin = new AddEditWin(product);
+                this.Opacity = 0.3;
+                addEditWin.ShowDialog();
+            }
+            this.Opacity = 1;
+            ListProduct.ItemsSource = new ObservableCollection<Product>(context.Product);
 
         }
     }

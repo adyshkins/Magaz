@@ -82,7 +82,8 @@
                  Grid.Column="1"
                  Margin="7"
                  FontSize="15"
-                 VerticalContentAlignment="Center"/>
+                 VerticalContentAlignment="Center" PreviewTextInput="txtProductPrice_PreviewTextInput"
+                 />
 
         <TextBox x:Name="txtProductDescription" Grid.Row="6"
                  Grid.Column="1"
@@ -100,7 +101,8 @@
                  Grid.Column="1"
                  Margin="7"
                  FontSize="15"
-                 VerticalContentAlignment="Center"/>
+                 VerticalContentAlignment="Center"
+                 PreviewTextInput="txtProductCount_PreviewTextInput"/>
 
         <ComboBox x:Name="cmbUnitOfMeasure" Grid.Row="9"
                  Grid.Column="1"
