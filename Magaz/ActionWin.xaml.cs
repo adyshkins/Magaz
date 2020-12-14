@@ -32,7 +32,22 @@ namespace Magaz
 
         }
 
-        void BrushButton() // переделать
+        public ActionWin(Employee employee)
+        {
+            InitializeComponent();
+
+            productList = new ObservableCollection<Product>(context.Product);
+            ListProduct.ItemsSource = productList;
+
+            if (employee.IdRole == 1)
+            {
+                btnAddProduct.Visibility = Visibility.Hidden;
+                btnDeleteProduct.Visibility = Visibility.Hidden;
+                btnEditProduct.Visibility = Visibility.Hidden;
+            }
+        }
+
+        void BrushButton()
         {
             btnMainPage.BorderThickness = new Thickness(0);
             btnAppliances.BorderThickness = new Thickness(0);
@@ -141,8 +156,31 @@ namespace Magaz
                 AddEditWin addEditWin = new AddEditWin(product);
                 this.Opacity = 0.3;
                 addEditWin.ShowDialog();
+                this.Opacity = 1;
+                ListProduct.ItemsSource = new ObservableCollection<Product>(context.Product);
             }
-            this.Opacity = 1;
+            else
+            {
+                MessageBox.Show("Запись не выбрана");
+            }
+        }
+
+        private void btnDeleteProduct_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListProduct.SelectedItem is Product product)
+            {
+                var result = MessageBox.Show("Удалить выбранный товар?", "Удаление товара", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    context.Product.Remove(product);
+                    context.SaveChanges();
+                }                
+            }
+            else
+            {
+                MessageBox.Show("Запись не выбрана");
+            }
+
             ListProduct.ItemsSource = new ObservableCollection<Product>(context.Product);
 
         }

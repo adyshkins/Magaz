@@ -37,6 +37,7 @@ namespace Magaz
         public virtual DbSet<Supply> Supply { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Vendor> Vendor { get; set; }
+        public virtual DbSet<Role> Role { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

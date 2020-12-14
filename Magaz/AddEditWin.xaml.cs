@@ -23,7 +23,9 @@ namespace Magaz
     public partial class AddEditWin : Window
     {
         string pathImage = null;
-        private Product AddProduct {get;}
+        private Product AddProduct { get; }
+
+        private Product productEdit;
 
         private bool _isEdit;
 
@@ -46,12 +48,12 @@ namespace Magaz
         public AddEditWin(Product product)
         {
             InitializeComponent();
-
+            productEdit = product;
             _isEdit = true;
             // заполнение полей данными
             cmbProductCategory.ItemsSource = context.CategoryProduct.ToList();
             cmbProductCategory.DisplayMemberPath = "NameCategory";
-            
+
             cmbUnitOfMeasure.ItemsSource = context.Measure.ToList();
             cmbUnitOfMeasure.DisplayMemberPath = "NameMeasure";
 
@@ -82,13 +84,13 @@ namespace Magaz
         // Выбор фото
         private void btnAddImage_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFile= new OpenFileDialog();
+            OpenFileDialog openFile = new OpenFileDialog();
 
             if (openFile.ShowDialog() == true)
             {
                 imageProduct.Source = new BitmapImage(new Uri(openFile.FileName));
                 pathImage = openFile.FileName;
-            }    
+            }
         }
 
         //Выход
@@ -100,7 +102,6 @@ namespace Magaz
         // Добавить (Изменить) продукт
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            
             // проверка на пустоту
             if (string.IsNullOrWhiteSpace(txtProductName.Text))
             {
@@ -120,58 +121,97 @@ namespace Magaz
                 return;
             }
 
-            // если нет фото передавем null
-            if (pathImage != null)
-            {
-                AddProduct.ProductImage = File.ReadAllBytes(pathImage);
-            }
-            else
-            {
-                AddProduct.ProductImage = null;
-            }
 
-            // если не выбрали фото, выводим вопрос с подтверждением
-            if (pathImage == null)
+
+            try
             {
-                var resMess = MessageBox.Show("Фото не выбрано. Сохранить товар без фото?", "Сообщение", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (resMess == MessageBoxResult.No)
+                if (_isEdit == false)
                 {
-                    return;
+                    // если нет фото передаём null
+                    if (pathImage != null)
+                    {
+                        AddProduct.ProductImage = File.ReadAllBytes(pathImage);
+                    }
+                    else
+                    {
+                        AddProduct.ProductImage = null;
+                    }
+
+                    // если не выбрали фото, выводим вопрос с подтверждением
+                    if (pathImage == null)
+                    {
+                        var resMess = MessageBox.Show("Фото не выбрано. Сохранить товар без фото?", "Сообщение", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                        if (resMess == MessageBoxResult.No)
+                        {
+                            return;
+                        }
+                    }
+
+                    AddProduct.ProductName = txtProductName.Text;
+                    AddProduct.ProductDescription = txtProductDescription.Text;
+                    AddProduct.ProductPrice = Convert.ToDecimal(txtProductPrice.Text);
+                    AddProduct.CountProduct = Convert.ToInt32(txtProductCount.Text);
+
+                    AddProduct.IdProductCategory = context.CategoryProduct
+                    .Where(i => i.NameCategory == cmbProductCategory.Text)
+                    .Select(i => i.IdCategory).FirstOrDefault();
+
+                    AddProduct.IdUnitOfMeasure = context.Measure.Where(i => i.NameMeasure == cmbUnitOfMeasure.Text)
+                    .Select(i => i.IdMeasure).FirstOrDefault();
+
+                    context.Product.Add(AddProduct); // добавление товара
+                    context.SaveChanges();
+                    MessageBox.Show($"Товар {txtProductName.Text} добавлен");
                 }
-            }
 
-            if (_isEdit == false)
-            {
-                AddProduct.ProductName = txtProductName.Text;
-                AddProduct.ProductDescription = txtProductDescription.Text;
-                AddProduct.ProductPrice = Convert.ToDecimal(txtProductPrice.Text);
-                AddProduct.CountProduct = Convert.ToInt32(txtProductCount.Text);
+                if (_isEdit == true)
+                {
+                    // изм. товара
 
-                AddProduct.IdProductCategory = context.CategoryProduct
-                .Where(i => i.NameCategory == cmbProductCategory.Text)
-                .Select(i => i.IdCategory).FirstOrDefault();
+                    // если нет фото передаём null
+                    if (pathImage != null)
+                    {
+                        productEdit.ProductImage = File.ReadAllBytes(pathImage); // переделать!!!!!!!!!!!!
+                    }
+                    else
+                    {
+                        productEdit.ProductImage = null;
+                    }
 
-                AddProduct.IdUnitOfMeasure = context.Measure.Where(i => i.NameMeasure == cmbUnitOfMeasure.Text)
-                .Select(i => i.IdMeasure).FirstOrDefault();
+                    // если не выбрали фото, выводим вопрос с подтверждением
 
-                context.Product.Add(AddProduct); // добавление товара
-                context.SaveChanges();
-                MessageBox.Show($"Товар {txtProductName.Text} добавлен");
-            }
 
-            if (_isEdit == true)
+                    productEdit.ProductName = txtProductName.Text;
+                    productEdit.ProductDescription = txtProductDescription.Text;
+                    productEdit.ProductPrice = Convert.ToDecimal(txtProductPrice.Text);
+                    productEdit.CountProduct = Convert.ToInt32(txtProductCount.Text);
 
-            { 
-                // изменения выбранного продукта
-            }
+                    productEdit.IdProductCategory = context.CategoryProduct
+                    .Where(i => i.NameCategory == cmbProductCategory.Text)
+                    .Select(i => i.IdCategory).FirstOrDefault();
 
+                    productEdit.IdUnitOfMeasure = context.Measure.Where(i => i.NameMeasure == cmbUnitOfMeasure.Text)
+                    .Select(i => i.IdMeasure).FirstOrDefault();
+
+                    context.SaveChanges();
+
+                    MessageBox.Show("Данные успешно сохранены");
+
+                }
                 this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+
+           
         }
 
         // запрет ввода всех символов кроме цифр и точки в поле цена
         private void txtProductPrice_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = "0123456789.".IndexOf(e.Text) < 0 ;
+            e.Handled = "0123456789.".IndexOf(e.Text) < 0;
         }
 
         // запрет ввода всех символов кроме цифр и точки в поле Количество

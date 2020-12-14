@@ -23,6 +23,8 @@
         <AssociationConnector Association="ShopElectronicModel.FK_ProductSupply_Product" ManuallyRouted="false" />
         <AssociationConnector Association="ShopElectronicModel.FK_ProductSupply_Supply" ManuallyRouted="false" />
         <AssociationConnector Association="ShopElectronicModel.FK_Supply_Vendor" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ShopElectronicModel.Role" Width="1.5" PointX="0.75" PointY="15.25" />
+        <AssociationConnector Association="ShopElectronicModel.FK_Employee_Role" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
