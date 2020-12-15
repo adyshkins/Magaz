@@ -64,7 +64,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddEditWin.xaml.cs">
+    <Compile Include="Windows\AddEditWin.xaml.cs">
       <DependentUpon>AddEditWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="HelperClass\AppData.cs" />
@@ -113,36 +113,36 @@
     <Compile Include="Vendor.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Window1.xaml.cs">
+    <Compile Include="Windows\Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\AdminWin.xaml.cs">
       <DependentUpon>AdminWin.xaml</DependentUpon>
     </Compile>
-    <Page Include="ActionWin.xaml">
+    <Page Include="Windows\ActionWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddEditWin.xaml">
+    <Page Include="Windows\AddEditWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StartWin.xaml">
+    <Page Include="Windows\StartWin.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="ActionWin.xaml.cs">
+    <Compile Include="Windows\ActionWin.xaml.cs">
       <DependentUpon>ActionWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="StartWin.xaml.cs">
+    <Compile Include="Windows\StartWin.xaml.cs">
       <DependentUpon>StartWin.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Window1.xaml">
+    <Page Include="Windows\Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
