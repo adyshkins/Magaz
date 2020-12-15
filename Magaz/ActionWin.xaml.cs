@@ -39,6 +39,8 @@ namespace Magaz
             productList = new ObservableCollection<Product>(context.Product);
             ListProduct.ItemsSource = productList;
 
+            txtNameEmpl.Text = employee.LastName + " " + employee.FirstName + " " + employee.MiddleName;
+
             if (employee.IdRole == 1)
             {
                 btnAddProduct.Visibility = Visibility.Hidden;

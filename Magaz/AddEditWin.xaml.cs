@@ -42,7 +42,6 @@ namespace Magaz
 
             AddProduct = new Product();
             _isEdit = false;
-
         }
 
         public AddEditWin(Product product)

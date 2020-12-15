@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static Magaz.AppData;
 
+
 namespace Magaz
 {
     /// <summary>
@@ -34,14 +35,31 @@ namespace Magaz
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
 
-            Employee user = context.Employee.ToList().Where(i => i.Login == txtLogin.Text && i.Password == pswPassword.Password).FirstOrDefault();
+            Employee user = context.Employee
+                .ToList().Where(i => i.Login == txtLogin.Text && i.Password == pswPassword.Password)
+                .FirstOrDefault(); // поиск записи в БД с логином и паролем введенным пользователем
 
             if (user != null)
             {
-                ActionWin actionWin = new ActionWin(user);
-                this.Hide();
-                actionWin.ShowDialog();
-                this.Show();
+                HelperClass.DataUser.User = user;
+
+                if (user.IdRole == 1)
+                {
+                    ActionWin actionWin = new ActionWin(user);
+                    this.Hide();
+                    actionWin.ShowDialog();
+                    this.Show();
+                }
+                else if (user.IdRole == 2)
+                {
+                    Windows.AdminWin adminWinxaml = new Windows.AdminWin();
+                    this.Hide();
+                    adminWinxaml.ShowDialog();
+                    this.Show();
+                }
+
+
+                
             }
             else
             {

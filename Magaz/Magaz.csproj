@@ -67,13 +67,14 @@
     <Compile Include="AddEditWin.xaml.cs">
       <DependentUpon>AddEditWin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AppData.cs" />
+    <Compile Include="HelperClass\AppData.cs" />
     <Compile Include="CategoryProduct.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Employee.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="HelperClass\DataUser.cs" />
     <Compile Include="Measure.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
@@ -115,6 +116,9 @@
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\AdminWin.xaml.cs">
+      <DependentUpon>AdminWin.xaml</DependentUpon>
+    </Compile>
     <Page Include="ActionWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -139,6 +143,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Window1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AdminWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -204,5 +212,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

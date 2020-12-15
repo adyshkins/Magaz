@@ -1,0 +1,103 @@
+﻿<Window x:Class="Magaz.Windows.AdminWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Magaz.Windows"
+        mc:Ignorable="d"
+        Title="AdminWinxaml" Height="450" Width="800" Background="#7284A8">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.ColumnSpan="4" 
+                Background="#FFF" 
+                Margin="100 2"
+                CornerRadius="7">
+            <TextBlock HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="15">
+            <Run Text="ФИО" x:Name="txbUser"/>
+            <Run Text="Выберите дальнейшее действие"/>
+
+            </TextBlock>
+        </Border>
+
+
+       
+        <Border Grid.Column="0" 
+                Grid.Row="2" 
+                Margin="10"
+                BorderThickness="1"
+                BorderBrush="Gray"
+                CornerRadius="10"
+                Background="#FFF">
+            <Button x:Name="btnAddProduct" Margin="10" 
+                    Background="{x:Null}" 
+                    BorderThickness="0"
+                    Click="btnAddProduct_Click">
+                <TextBlock Text="Добавить товар" 
+                       TextWrapping="Wrap"
+                       FontSize="20"
+                       FontFamily="Comic Sans MS"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+            </Button>
+           
+        </Border> 
+        
+        <Border Grid.Column="1" 
+                Grid.Row="2" 
+                Margin="10"
+                BorderThickness="1"
+                BorderBrush="Gray"
+                CornerRadius="10"
+                Background="#FFF">
+            <Button Margin="10" 
+                    Background="{x:Null}" 
+                    BorderThickness="0">
+                <TextBlock Text="Все товары" 
+                       TextWrapping="Wrap"
+                       FontSize="20"
+                       FontFamily="Comic Sans MS"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+            </Button>
+           
+        </Border>
+
+        <Border Grid.Column="2" 
+                Grid.Row="2" 
+                Margin="10"
+                BorderThickness="1"
+                BorderBrush="Gray"
+                CornerRadius="10"
+                Background="#FFF">
+            <Button Margin="10" 
+                    Background="{x:Null}" 
+                    BorderThickness="0">
+                <TextBlock Text="Свободная кнопка" 
+                       TextWrapping="Wrap"
+                       FontSize="20"
+                       FontFamily="Comic Sans MS"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+            </Button>
+
+        </Border>
+
+
+    </Grid>
+</Window>
