@@ -27,9 +27,9 @@ namespace Magaz.Windows
 
         private void btnAddProduct_Click(object sender, RoutedEventArgs e)
         {
-            AddEditWin addEditWin = new AddEditWin();
+            ActionWin actionWin = new ActionWin();
             this.Hide();
-            addEditWin.ShowDialog();
+            actionWin.ShowDialog();
             this.Show();
         }
     }

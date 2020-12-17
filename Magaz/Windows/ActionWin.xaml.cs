@@ -186,5 +186,7 @@ namespace Magaz
             ListProduct.ItemsSource = new ObservableCollection<Product>(context.Product);
 
         }
+
+       
     }
 }

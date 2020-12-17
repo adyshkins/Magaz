@@ -64,6 +64,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="HelperClass\stringGen.cs" />
+    <Compile Include="Windows\AddEditEmployeeWin.xaml.cs">
+      <DependentUpon>AddEditEmployeeWin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\AddEditWin.xaml.cs">
       <DependentUpon>AddEditWin.xaml</DependentUpon>
     </Compile>
@@ -113,6 +117,9 @@
     <Compile Include="Vendor.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Windows\EmployeeWin.xaml.cs">
+      <DependentUpon>EmployeeWin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
@@ -123,7 +130,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\AddEditEmployeeWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\AddEditWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\EmployeeWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

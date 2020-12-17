@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Magaz.Windows"
         mc:Ignorable="d"
-        Title="AdminWinxaml" Height="450" Width="800" Background="#7284A8" WindowStartupLocation="CenterScreen">
+        Title="Страница администратора" Height="450" Width="800" Background="#7284A8" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="3*"/>
@@ -19,12 +20,11 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
         <Border Grid.ColumnSpan="4" 
                 Background="#FFF" 
-                Margin="100 2"
+                Margin="100 15 100 0 "
                 CornerRadius="7">
             <TextBlock HorizontalAlignment="Center"
                    VerticalAlignment="Center"
@@ -38,7 +38,8 @@
 
        
         <Border Grid.Column="0" 
-                Grid.Row="2" 
+                Grid.Row="2"
+                Grid.RowSpan="2"
                 Margin="10"
                 BorderThickness="1"
                 BorderBrush="Gray"
@@ -48,7 +49,7 @@
                     Background="{x:Null}" 
                     BorderThickness="0"
                     Click="btnAddProduct_Click">
-                <TextBlock Text="Добавить товар" 
+                <TextBlock Text="Товары" 
                        TextWrapping="Wrap"
                        FontSize="20"
                        FontFamily="Comic Sans MS"
@@ -58,8 +59,11 @@
            
         </Border> 
         
+        
+
         <Border Grid.Column="1" 
                 Grid.Row="2" 
+                Grid.RowSpan="2"
                 Margin="10"
                 BorderThickness="1"
                 BorderBrush="Gray"
@@ -68,18 +72,18 @@
             <Button Margin="10" 
                     Background="{x:Null}" 
                     BorderThickness="0">
-                <TextBlock Text="Все товары" 
+                <TextBlock Text="Сотрудники" 
                        TextWrapping="Wrap"
                        FontSize="20"
                        FontFamily="Comic Sans MS"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"/>
             </Button>
-           
         </Border>
 
         <Border Grid.Column="2" 
                 Grid.Row="2" 
+                Grid.RowSpan="2"
                 Margin="10"
                 BorderThickness="1"
                 BorderBrush="Gray"
@@ -88,7 +92,7 @@
             <Button Margin="10" 
                     Background="{x:Null}" 
                     BorderThickness="0">
-                <TextBlock Text="Свободная кнопка" 
+                <TextBlock Text="Поставки" 
                        TextWrapping="Wrap"
                        FontSize="20"
                        FontFamily="Comic Sans MS"
@@ -97,7 +101,6 @@
             </Button>
 
         </Border>
-
 
     </Grid>
 </Window>

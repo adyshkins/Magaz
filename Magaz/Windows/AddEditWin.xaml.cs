@@ -23,6 +23,7 @@ namespace Magaz
     public partial class AddEditWin : Window
     {
         string pathImage = null;
+
         private Product AddProduct { get; }
 
         private Product productEdit;

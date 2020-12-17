@@ -147,8 +147,8 @@
                     Grid.Row="0"
                     Content="Изменить"
                     Margin="20 15"
-                    FontSize="18" Click="btnEditProduct_Click"
-                    />
+                    FontSize="18" Click="btnEditProduct_Click"/>
+
 
             <Button x:Name="btnDeleteProduct" 
                     Grid.Column="2"

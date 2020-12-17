@@ -5,43 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Magaz"
         mc:Ignorable="d"
-        Title="Window1" Height="200" Width="800">
-    <Grid Height="80">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="400"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="90"/>
-            <ColumnDefinition Width="10"/>
-        </Grid.ColumnDefinitions>
-
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-            </Grid.RowDefinitions>
-
-
-            <TextBlock Grid.Row="0" Text= "{Binding ProductName}" TextWrapping="Wrap"/>
-            <TextBlock Grid.Row="1" Text="{Binding ProductDescription}" TextWrapping="Wrap"/>
-        </Grid>
-
-        <Border Grid.Column="0" Width="70" Margin="3" BorderBrush="Gray" BorderThickness="1" CornerRadius="4">
-            <Image x:Name="productImage" />
-        </Border>
-
-        <TextBlock Grid.Column="2" 
-                   Text="{Binding ProductPrice}" 
-                   VerticalAlignment="Center" 
-                   HorizontalAlignment="Right"
-                   FontSize="20"
-                   FontWeight="Bold"/>
-
-        <TextBlock Grid.Column="2" 
-                   Text="{Binding CountProduct}" 
-                   VerticalAlignment="Center" 
-                   HorizontalAlignment="Right"
-                   FontSize="20"
-                   FontWeight="Bold"/>
+        Title="Window1" Height="500" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
     </Grid>
 </Window>

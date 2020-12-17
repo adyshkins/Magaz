@@ -52,10 +52,9 @@ namespace Magaz
                 }
                 else if (user.IdRole == 2)
                 {
-                    Windows.AdminWin adminWinxaml = new Windows.AdminWin();
-                    this.Hide();
-                    adminWinxaml.ShowDialog();
-                    this.Show();
+                    Windows.AdminWin adminWinxaml = new Windows.AdminWin();                    
+                    adminWinxaml.Show();
+                    this.Close();
                 }
 
 
