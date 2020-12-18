@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Magaz.Windows"
         mc:Ignorable="d"
-        Title="AddEditEmployeeWin" Height="600" Width="400" WindowStartupLocation="CenterScreen">
+        Title="AddEditEmployeeWin" Height="600" Width="400" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -24,7 +24,7 @@
             <RowDefinition/>
 
         </Grid.RowDefinitions>
-        <TextBlock x:Name="txtxHeader" Text="Добавление сотрудника"
+        <TextBlock x:Name="txtxHeader"
                    Grid.ColumnSpan="2"
                    FontSize="17"
                    HorizontalAlignment="Center"

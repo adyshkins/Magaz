@@ -15,7 +15,7 @@ namespace Magaz.HelperClass
             {
                 fio += (char)i;
             }
-            return fio;
+            return fio + "-";
         }
     }
 }

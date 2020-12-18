@@ -61,7 +61,7 @@
                  Height="30"
                  FontSize="16"
                  VerticalContentAlignment="Center"
-                 FontFamily="Tempus Sans ITC"
+                 FontFamily="Tempus Sans ITC" KeyDown="txtLogin_KeyDown"
                  />
 
 
@@ -98,8 +98,17 @@
                 Width="180"
                 Height="30"
                 Content="Отмена"
-                FontSize="15"
-                Click="btnClose_Click"/>
+                FontSize="15"                
+                Click="btnClose_Click">
+            <Button.ToolTip>
+                <Grid>
+                    <StackPanel>
+                        <Image Height="50" Source="/Magaz;component/Image/exit.jpg"/>
+                        <TextBlock Text="Выход из приложения"/>
+                    </StackPanel>
+                </Grid>
+            </Button.ToolTip>
+        </Button>
 
 
         <Button x:Name="btnRegistration"
@@ -113,6 +122,11 @@
                 Visibility="Hidden"
                />
 
+        <TextBlock x:Name="txtCapsLk" 
+                   Grid.Row="6"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Margin="20"/>
 
         <TextBlock x:Name="txtDataTime" Text="Время"
                    Grid.Row="7"

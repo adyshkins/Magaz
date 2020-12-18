@@ -44,7 +44,26 @@ namespace Magaz.Windows
                 context.SaveChanges();
                 MessageBox.Show("Сотрудник удален");
                 ListEmployee.ItemsSource = context.Employee.ToList();
+            }
+            else
+            {
+                MessageBox.Show("Сотрудник не выбран");
+            }
+        }
 
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListEmployee.SelectedItem is Employee employee)
+            {
+                AddEditEmployeeWin addEditEmployeeWin = new AddEditEmployeeWin(employee);
+                this.Hide();
+                addEditEmployeeWin.ShowDialog();
+                ListEmployee.ItemsSource = context.Employee.ToList();
+                this.Show();
+            }
+            else
+            {
+                MessageBox.Show("Сотрудник не выбран");
             }
         }
     }

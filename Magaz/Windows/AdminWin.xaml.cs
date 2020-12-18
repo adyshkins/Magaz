@@ -32,5 +32,13 @@ namespace Magaz.Windows
             actionWin.ShowDialog();
             this.Show();
         }
+
+        private void btnEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            EmployeeWin employeeWin = new EmployeeWin();
+            this.Hide();
+            employeeWin.ShowDialog();
+            this.Show();
+        }
     }
 }

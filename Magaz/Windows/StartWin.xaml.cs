@@ -66,5 +66,13 @@ namespace Magaz
             }
           
         }
+
+        private void txtLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.CapsLock)
+            {
+                txtCapsLk.Text = "Нажат СapsLock";
+            }
+        }
     }
 }

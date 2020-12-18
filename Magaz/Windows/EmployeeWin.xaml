@@ -57,7 +57,23 @@
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" Width="*"/>
                 <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}" Width="*"/>
                 <DataGridTextColumn Header="Отчество" Binding="{Binding MiddleName}" Width="*"/>
-                <DataGridTextColumn Header="Должность" Binding="{Binding Role.NameRole}" Width="*"/>
+                <DataGridTextColumn Header="Должность" Binding="{Binding Role.NameRole}" Width="*" />
+                <DataGridTemplateColumn Header="Пикоко" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="Наведи">
+                                <TextBlock.ToolTip>
+                                    <Grid Width="50"> 
+                                    <StackPanel>
+                                        <TextBlock Text="Смотри"/>
+                                        <Image Source="/Magaz;component/Image/nullImage.png"/>
+                                    </StackPanel>
+                                    </Grid>
+                                </TextBlock.ToolTip>
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
 
@@ -83,7 +99,7 @@
                     Content="Изменить"
                     Margin="20 15"
                     FontSize="18" 
-                    />
+                    Click="btnEdit_Click"/>
 
             <Button x:Name="btnDelete" 
                     Grid.Column="2"
