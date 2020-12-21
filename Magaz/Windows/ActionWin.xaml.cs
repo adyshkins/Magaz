@@ -30,6 +30,8 @@ namespace Magaz
             productList = new ObservableCollection<Product>(context.Product);
             ListProduct.ItemsSource = productList;
 
+            txtNameEmpl.Text = $" {HelperClass.DataUser.User.LastName} {HelperClass.DataUser.User.FirstName} {HelperClass.DataUser.User.MiddleName}";
+
         }
 
         public ActionWin(Employee employee)
@@ -187,6 +189,26 @@ namespace Magaz
 
         }
 
-       
+        private void ListProduct_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete)
+            {
+                if (ListProduct.SelectedItem is Product product)
+                {
+                    var result = MessageBox.Show("Удалить выбранный товар?", "Удаление товара", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        context.Product.Remove(product);
+                        context.SaveChanges();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Запись не выбрана");
+                }
+
+                ListProduct.ItemsSource = new ObservableCollection<Product>(context.Product);
+            }
+        }
     }
 }

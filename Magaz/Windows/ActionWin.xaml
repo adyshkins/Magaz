@@ -19,7 +19,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="1" Grid.Column="1"  Background="#FFF"/>
+        <Border Grid.Row="1" Grid.Column="1"/>
         <Border  Grid.Row="1"  Background="#7284A8"/>
 
         <TextBlock Grid.Row="0" 
@@ -63,7 +63,9 @@
         </Grid>
 
         <ListView x:Name="ListProduct" Grid.Row="1" Grid.Column="1" 
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  KeyDown="ListProduct_KeyDown"
+                  Background="Yellow">
 
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>

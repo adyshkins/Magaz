@@ -25,6 +25,9 @@ namespace Magaz.Windows
         {
             InitializeComponent();
             ListEmployee.ItemsSource = context.Employee.ToList();
+
+            txtNameEmpl.Text = $" {HelperClass.DataUser.User.LastName} {HelperClass.DataUser.User.FirstName} {HelperClass.DataUser.User.MiddleName}";
+
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)

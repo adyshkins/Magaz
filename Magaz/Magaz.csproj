@@ -68,6 +68,9 @@
     <Compile Include="Windows\AddEditEmployeeWin.xaml.cs">
       <DependentUpon>AddEditEmployeeWin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\AddEditVendorWin.xaml.cs">
+      <DependentUpon>AddEditVendorWin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\AddEditWin.xaml.cs">
       <DependentUpon>AddEditWin.xaml</DependentUpon>
     </Compile>
@@ -120,6 +123,9 @@
     <Compile Include="Windows\EmployeeWin.xaml.cs">
       <DependentUpon>EmployeeWin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\VendorWin.xaml.cs">
+      <DependentUpon>VendorWin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
@@ -131,6 +137,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\AddEditEmployeeWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AddEditVendorWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -157,6 +167,10 @@
       <DependentUpon>StartWin.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\VendorWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

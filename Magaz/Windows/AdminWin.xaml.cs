@@ -40,5 +40,13 @@ namespace Magaz.Windows
             employeeWin.ShowDialog();
             this.Show();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            VendorWin vendor = new VendorWin();
+            this.Hide();
+            vendor.ShowDialog();
+            this.Show();
+        }
     }
 }
